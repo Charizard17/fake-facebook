@@ -27,7 +27,7 @@ class MainInfo extends Component {
           <strong>Find more</strong>
           <small className="text-muted">
             {" "}
-            of what you're looking for with Facebook Search.
+            of what you're looking for with Fakebook Search.
           </small>
         </h5>
       </div>

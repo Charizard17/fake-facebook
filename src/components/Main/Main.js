@@ -6,12 +6,12 @@ class Main extends Component {
   render() {
     return (
       <div className="container-fluid text-center bg-warning">
-        <div class="container bg-primary">
-          <div class="row">
-            <div class="col">
+        <div className="container">
+          <div className="row">
+            <div className="col">
               <MainInfo />
             </div>
-            <div class="col">
+            <div className="col">
               <MainCreate />
             </div>
           </div>

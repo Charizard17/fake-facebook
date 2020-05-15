@@ -9,6 +9,7 @@ class Header extends Component {
     e.preventDefault();
     if (username.value !== "" && password.value !== "") {
       console.log("Log In succesful!");
+      window.location.href = "/userpage";
       alertify.success("Log In succesful!");
     } else {
       if (username.value === "" && password.value !== "") {
@@ -24,7 +25,7 @@ class Header extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand navbar-light headerColor justify-content-around">
-          <a className="navbar-brand text-white" href="#">
+          <a className="navbar-brand text-white col-4" href="/">
             <h1 className="fakebook">fakebook</h1>
           </a>
           <form className="form-inline">

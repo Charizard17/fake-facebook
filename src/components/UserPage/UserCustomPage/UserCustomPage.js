@@ -4,10 +4,13 @@ import faker from "faker";
 class UserCustomPage extends Component {
   render() {
     let post = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < Math.floor(Math.random() * 10) + 3; i++) {
       let fakeAvatar = faker.image.avatar();
       post.push(
-        <div className="container border border-secondary mb-5">
+        <div
+          key={faker.random.uuid()}
+          className="container border border-secondary mb-5"
+        >
           <img
             className="rounded-circle mt-2 mr-3 float-left"
             src={fakeAvatar}
@@ -37,7 +40,7 @@ class UserCustomPage extends Component {
             data-toggle="buttons"
           >
             <label className="btn active">
-              <input type="checkbox" checked />
+              <input type="checkbox" defaultChecked />
               <img
                 className="mr-2"
                 style={{ width: "25px", height: "25px" }}
@@ -46,7 +49,7 @@ class UserCustomPage extends Component {
               Like
             </label>
             <label className="btn active">
-              <input type="checkbox" checked />
+              <input type="checkbox" defaultChecked />
               <img
                 className="mr-2"
                 style={{ width: "25px", height: "25px" }}
@@ -55,7 +58,7 @@ class UserCustomPage extends Component {
               Comment
             </label>
             <label className="btn active">
-              <input type="checkbox" checked />
+              <input type="checkbox" defaultChecked />
               <img
                 className="mr-2"
                 style={{ width: "25px", height: "25px" }}
@@ -75,7 +78,7 @@ class UserCustomPage extends Component {
           <div className="container-expand">
             <hr />
           </div>
-          <div class="input-group mb-3">
+          <div className="input-group mb-3">
             <img
               className="rounded-circle mr-3"
               style={{ width: "40px", height: "40px" }}
@@ -104,57 +107,52 @@ class UserCustomPage extends Component {
               height: "400px",
             }}
           ></div>
-          <div>
-            <div className="btn-group mt-2 mb-2" role="group">
-              <button
-                type="button"
-                className="btn btn-light border border-dark text-muted font-weight-bolder"
-              >
-                Liked
-              </button>
-              <button
-                type="button"
-                className="btn btn-light border border-dark text-muted font-weight-bolder"
-              >
-                Following
-              </button>
-              <button
-                type="button"
-                className="btn btn-light border border-dark text-muted font-weight-bolder"
-              >
-                Share
-              </button>
-              <button
-                type="button"
-                className="btn btn-light rounded-right border border-dark text-muted font-weight-bolder"
-              >
-                ...
-              </button>
-              <div
-                className="btn-group"
-                style={{ marginLeft: "255px" }}
-                role="group"
-              >
-                <button
-                  type="button"
-                  className="btn btn-primary text-white border border-dark rounded font-weight-bolder mr-3"
-                >
-                  Learn More
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-light border border-dark text-muted rounded font-weight-bolder"
-                >
-                  Send Message
-                </button>
-              </div>
-            </div>
+
+          <div className="btn-group mt-2 mb-2" role="group">
+            <button
+              type="button"
+              className="btn btn-light border border-dark text-muted font-weight-bolder"
+            >
+              Liked
+            </button>
+            <button
+              type="button"
+              className="btn btn-light border border-dark text-muted font-weight-bolder"
+            >
+              Following
+            </button>
+            <button
+              type="button"
+              className="btn btn-light border border-dark text-muted font-weight-bolder"
+            >
+              Share
+            </button>
+            <button
+              type="button"
+              className="btn btn-light rounded-right border border-dark text-muted font-weight-bolder"
+            >
+              ...
+            </button>
+          </div>
+          <div className="btn-group float-right mt-2" role="group">
+            <button
+              type="button"
+              className="btn btn-primary text-white border border-dark rounded font-weight-bolder mr-3"
+            >
+              Learn More
+            </button>
+            <button
+              type="button"
+              className="btn btn-light border border-dark text-muted rounded font-weight-bolder"
+            >
+              Send Message
+            </button>
           </div>
         </div>
         <div className="row mt-3">
           <div className="col-8">
-            <div className="container bg-white">
-              <h3>Posts</h3>
+            <div className="container bg-white pt-3">
+              <h4>Posts</h4>
               {post}
             </div>
           </div>

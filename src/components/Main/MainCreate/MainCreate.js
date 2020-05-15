@@ -37,6 +37,7 @@ class MainCreate extends Component {
     ) {
       console.log("Sign Up Succesful!");
       alertify.success("Sign Up Succesful!");
+      window.location.href = "/userpage";
     } else {
       if (firstName === "") {
         console.log("First name is mandatory!");

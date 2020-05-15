@@ -5,11 +5,12 @@ class UserCustomPage extends Component {
   render() {
     let post = [];
     for (let i = 0; i < 10; i++) {
+      let fakeAvatar = faker.image.avatar();
       post.push(
         <div className="container border border-secondary mb-5">
           <img
             className="rounded-circle mt-2 mr-3 float-left"
-            src={faker.image.avatar()}
+            src={fakeAvatar}
             style={{ width: "50px", height: "50px" }}
             alt=""
           />
@@ -71,6 +72,25 @@ class UserCustomPage extends Component {
             src="https://img.icons8.com/ultraviolet/40/000000/good-quality.png"
           />{" "}
           {Math.floor(Math.random() * 99) + 1}
+          <div className="container-expand">
+            <hr />
+          </div>
+          <div class="input-group mb-3">
+            <img
+              className="rounded-circle mr-3"
+              style={{ width: "40px", height: "40px" }}
+              src={fakeAvatar}
+              alt=""
+            />
+            <input
+              type="text"
+              style={{ fontSize: "18px" }}
+              className="form-control rounded-pill"
+              placeholder="Write a comment.."
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+            />
+          </div>
         </div>
       );
     }
@@ -139,13 +159,130 @@ class UserCustomPage extends Component {
             </div>
           </div>
           <div className="col-4">
-            <div className="container bg-white pt-2 pb-2">
+            <div className="container bg-white p-2 mb-4">
               <input
                 className="form-control"
+                style={{ border: "none" }}
                 type="text"
                 placeholder="&#x1f50d; Search for posts on this page"
                 aria-label="Search"
               />
+            </div>
+            <div className="container bg-white p-3 mb-4">
+              <h5>
+                <strong>Community</strong>
+              </h5>
+              <br />
+              <span>
+                <img
+                  style={{ width: "23px", height: "23px" }}
+                  src="https://img.icons8.com/dotty/80/000000/groups.png"
+                />{" "}
+                <a href="invite">Invite your friends</a> to like this Page
+              </span>
+              <br />
+              <br />
+              <span>
+                <img
+                  style={{ width: "23px", height: "23px" }}
+                  src="https://img.icons8.com/wired/64/000000/facebook-like.png"
+                />{" "}
+                {Math.floor(Math.random() * 10000)} people like this
+              </span>
+              <br />
+              <br />
+              <span>
+                <img
+                  style={{ width: "23px", height: "23px" }}
+                  src="https://img.icons8.com/ios/50/000000/checked-user-male.png"
+                />{" "}
+                {Math.floor(Math.random() * 10000)} people follow this
+              </span>
+              <br />
+              <br />
+              <span>
+                <img
+                  style={{ width: "23px", height: "23px" }}
+                  src="https://img.icons8.com/ios/50/000000/user-group-man-man.png"
+                />{" "}
+                <a href={faker.internet.userName()}>{faker.name.findName()}</a>{" "}
+                likes this{" "}
+              </span>
+            </div>
+            <div className="container bg-white p-3 mb-4">
+              <h5>
+                <strong>About</strong>
+              </h5>
+              <br />
+              <span>
+                <img
+                  style={{ width: "23px", height: "23px" }}
+                  src="https://img.icons8.com/dotty/50/000000/facebook-messenger.png"
+                />{" "}
+                <a href="contactUnblastMessenger">
+                  <strong>Contact Unblast on Messenger</strong>
+                </a>
+              </span>
+              <br />
+              <br />
+              <span>
+                <img
+                  style={{ width: "23px", height: "23px" }}
+                  src="https://img.icons8.com/dotty/80/000000/saving-book.png"
+                />{" "}
+                <a href="education">Education</a>{" "}
+              </span>
+            </div>
+            <div className="container bg-white p-3 mb-4">
+              <h5>
+                <strong>People</strong>
+              </h5>
+              <div className="container-expand">
+                <hr />
+              </div>
+              <span className="text-center d-flex justify-content-center">
+                <strong style={{ fontSize: "30px" }}>
+                  {Math.floor(Math.random() * 150)}k <small>likes</small>
+                </strong>
+              </span>
+            </div>
+            <div className="container bg-white p-3 mb-4">
+              <h5>
+                <strong>Pages liked by this people</strong>
+              </h5>
+              <div className="container-expand">
+                <hr />
+              </div>
+              <span>
+                <img
+                  className="rounded-circle mr-3"
+                  src={faker.internet.avatar()}
+                  style={{ width: "75px", height: "75px" }}
+                />
+                {faker.name.jobType()}s
+              </span>
+              <div className="container-expand">
+                <hr />
+              </div>
+              <span>
+                <img
+                  className="rounded-circle mr-3"
+                  src={faker.internet.avatar()}
+                  style={{ width: "75px", height: "75px" }}
+                />
+                {faker.name.jobType()}s
+              </span>
+              <div className="container-expand">
+                <hr />
+              </div>
+              <span>
+                <img
+                  className="rounded-circle mr-3"
+                  src={faker.internet.avatar()}
+                  style={{ width: "75px", height: "75px" }}
+                />
+                {faker.name.jobType()}s
+              </span>
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ class Header extends Component {
     e.preventDefault();
     if (username.value !== "" && password.value !== "") {
       console.log("Log In succesful!");
-      window.location.href = "/main";
+      window.location = "https://fakeboook-userpage.netlify.app/";
       alertify.success("Log In succesful!");
     } else {
       if (username.value === "" && password.value !== "") {

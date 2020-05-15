@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import faker from "faker";
 import "./UserPage.css";
 import UserInfos from "./UserInfos/UserInfos";
 import UserCustomPage from "./UserCustomPage/UserCustomPage";

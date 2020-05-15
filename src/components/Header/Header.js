@@ -9,7 +9,7 @@ class Header extends Component {
     e.preventDefault();
     if (username.value !== "" && password.value !== "") {
       console.log("Log In succesful!");
-      window.location.href = "/userpage";
+      window.location.href = "/main";
       alertify.success("Log In succesful!");
     } else {
       if (username.value === "" && password.value !== "") {

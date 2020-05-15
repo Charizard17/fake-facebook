@@ -1,7 +1,25 @@
 import React, { Component } from "react";
 import "./Header.css";
+import alertify from "alertifyjs";
 
 class Header extends Component {
+  loginClick = (e) => {
+    let username = document.getElementById("username");
+    let password = document.getElementById("password");
+    e.preventDefault();
+    if (username.value !== "" && password.value !== "") {
+      console.log("Log In succesful!");
+      alertify.success("Log In succesful!");
+    } else {
+      if (username.value === "" && password.value !== "") {
+        console.log("Username is mandatory!");
+      } else if (username.value !== "" && password.value === "") {
+        console.log("Password is mandatory!");
+      } else {
+        console.log("Username and Password cannot be empty!");
+      }
+    }
+  };
   render() {
     return (
       <div>
@@ -12,6 +30,7 @@ class Header extends Component {
           <form className="form-inline">
             <div className="input-group-sm">
               <input
+                id="username"
                 type="text"
                 className="form-control ml-3 rounded-0"
                 placeholder="Username"
@@ -19,13 +38,16 @@ class Header extends Component {
                 aria-describedby="basic-addon1"
               />
               <input
-                type="text"
+                id="password"
+                type="password"
                 className="form-control ml-3 rounded-0"
                 placeholder="Password"
                 aria-label="Password"
                 aria-describedby="basic-addon1"
               />
               <button
+                id="loginButton"
+                onClick={this.loginClick}
                 className="btn-sm buttonColor text-white btn-outline-primary border-dark my-2 my-sm-0 ml-3"
                 type="submit"
               >

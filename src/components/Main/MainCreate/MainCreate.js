@@ -37,8 +37,9 @@ class MainCreate extends Component {
     ) {
       console.log("Sign Up Succesful!");
       alertify.success("Sign Up Succesful!");
-      window.location = "https://fakeboook-userpage.netlify.app/";
+      window.location.href = "/userpage";
     } else {
+      alert("For Sign In, all sections must be filled!");
       if (firstName === "") {
         console.log("First name is mandatory!");
       }

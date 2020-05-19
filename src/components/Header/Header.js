@@ -9,15 +9,18 @@ class Header extends Component {
     e.preventDefault();
     if (username.value !== "" && password.value !== "") {
       console.log("Log In succesful!");
-      window.location = "https://fakeboook-userpage.netlify.app/";
+      window.location.href = "/userpage";
       alertify.success("Log In succesful!");
     } else {
       if (username.value === "" && password.value !== "") {
         console.log("Username is mandatory!");
+        alert("The Log In section must be filled!");
       } else if (username.value !== "" && password.value === "") {
         console.log("Password is mandatory!");
+        alert("The Log In section must be filled!");
       } else {
         console.log("Username and Password cannot be empty!");
+        alert("The Log In section must be filled!");
       }
     }
   };

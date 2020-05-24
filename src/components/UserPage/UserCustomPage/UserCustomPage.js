@@ -2,17 +2,23 @@ import React, { Component } from "react";
 import faker from "faker";
 import Posts from "./Posts";
 import UserBanner from "./UserBanner";
+import Community from "./Community";
+import About from "./About";
+import People from "./People";
+import LikedByPeople from "./LikedByPeople";
 
 class UserCustomPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newPosts: [],
       initialPosts: [],
+      peopleLiked: [],
       color: faker.internet.color(),
+      name: faker.name.findName(),
+      username: faker.internet.userName(),
     };
   }
- 
+
   componentDidMount() {
     let initialPosts = this.getInitialPostsFromFaker();
     this.setState({ initialPosts });
@@ -32,7 +38,6 @@ class UserCustomPage extends Component {
     }
     return posts;
   }
-
   render() {
     return (
       <div>
@@ -65,122 +70,13 @@ class UserCustomPage extends Component {
                 aria-label="Search"
               />
             </div>
-            <div className="container bg-white p-3 mb-4">
-              <h5>
-                <strong>Community</strong>
-              </h5>
-              <br />
-              <span>
-                <img
-                  style={{ width: "23px", height: "23px" }}
-                  src="https://img.icons8.com/dotty/80/000000/groups.png"
-                />{" "}
-                <a href="invite">Invite your friends</a> to like this Page
-              </span>
-              <br />
-              <br />
-              <span>
-                <img
-                  style={{ width: "23px", height: "23px" }}
-                  src="https://img.icons8.com/wired/64/000000/facebook-like.png"
-                />{" "}
-                {Math.floor(Math.random() * 10000)} people like this
-              </span>
-              <br />
-              <br />
-              <span>
-                <img
-                  style={{ width: "23px", height: "23px" }}
-                  src="https://img.icons8.com/ios/50/000000/checked-user-male.png"
-                />{" "}
-                {Math.floor(Math.random() * 10000)} people follow this
-              </span>
-              <br />
-              <br />
-              <span>
-                <img
-                  style={{ width: "23px", height: "23px" }}
-                  src="https://img.icons8.com/ios/50/000000/user-group-man-man.png"
-                />{" "}
-                <a href={faker.internet.userName()}>{faker.name.findName()}</a>{" "}
-                likes this{" "}
-              </span>
-            </div>
-            <div className="container bg-white p-3 mb-4">
-              <h5>
-                <strong>About</strong>
-              </h5>
-              <br />
-              <span>
-                <img
-                  style={{ width: "23px", height: "23px" }}
-                  src="https://img.icons8.com/dotty/50/000000/facebook-messenger.png"
-                />{" "}
-                <a href="contactUnblastMessenger">
-                  <strong>Contact Unblast on Messenger</strong>
-                </a>
-              </span>
-              <br />
-              <br />
-              <span>
-                <img
-                  style={{ width: "23px", height: "23px" }}
-                  src="https://img.icons8.com/dotty/80/000000/saving-book.png"
-                />{" "}
-                <a href="education">Education</a>{" "}
-              </span>
-            </div>
-            <div className="container bg-white p-3 mb-4">
-              <h5>
-                <strong>People</strong>
-              </h5>
-              <div className="container-expand">
-                <hr />
-              </div>
-              <span className="text-center d-flex justify-content-center">
-                <strong style={{ fontSize: "30px" }}>
-                  {Math.floor(Math.random() * 150)}k <small>likes</small>
-                </strong>
-              </span>
-            </div>
-            <div className="container bg-white p-3 mb-4">
-              <h5>
-                <strong>Pages liked by this people</strong>
-              </h5>
-              <div className="container-expand">
-                <hr />
-              </div>
-              <span>
-                <img
-                  className="rounded-circle mr-3"
-                  src={faker.internet.avatar()}
-                  style={{ width: "75px", height: "75px" }}
-                />
-                {faker.name.jobType()}s
-              </span>
-              <div className="container-expand">
-                <hr />
-              </div>
-              <span>
-                <img
-                  className="rounded-circle mr-3"
-                  src={faker.internet.avatar()}
-                  style={{ width: "75px", height: "75px" }}
-                />
-                {faker.name.jobType()}s
-              </span>
-              <div className="container-expand">
-                <hr />
-              </div>
-              <span>
-                <img
-                  className="rounded-circle mr-3"
-                  src={faker.internet.avatar()}
-                  style={{ width: "75px", height: "75px" }}
-                />
-                {faker.name.jobType()}s
-              </span>
-            </div>
+            <Community username={this.state.username} name={this.state.name} />
+            <About />
+            <People />
+            {/* {this.state.peopleLiked.map((elem) => {
+              return <LikedByPeople job={elem.job} avatar={elem.avatar} />;
+            })} */}
+            <LikedByPeople />
           </div>
         </div>
       </div>

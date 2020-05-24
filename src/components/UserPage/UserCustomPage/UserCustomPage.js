@@ -1,159 +1,58 @@
 import React, { Component } from "react";
 import faker from "faker";
+import Posts from "./Posts";
+import UserBanner from "./UserBanner";
 
 class UserCustomPage extends Component {
-  render() {
-    let post = [];
+  constructor(props) {
+    super(props);
+    this.state = {
+      newPosts: [],
+      initialPosts: [],
+      color: faker.internet.color(),
+    };
+  }
+ 
+  componentDidMount() {
+    let initialPosts = this.getInitialPostsFromFaker();
+    this.setState({ initialPosts });
+  }
+
+  getInitialPostsFromFaker() {
+    let posts = [];
     for (let i = 0; i < Math.floor(Math.random() * 10) + 3; i++) {
-      let fakeAvatar = faker.image.avatar();
-      post.push(
-        <div
-          key={faker.random.uuid()}
-          className="container border border-secondary mb-5"
-        >
-          <img
-            className="rounded-circle mt-2 mr-3 float-left"
-            src={fakeAvatar}
-            style={{ width: "50px", height: "50px" }}
-            alt=""
-          />
-          <span className="text-primary row font-weight-bold mt-2">
-            @{faker.internet.userName()}
-          </span>
-          <span className="text-muted row">
-            {" "}
-            {Math.floor(Math.random() * 31)} {faker.date.month()} at{" "}
-            {Math.floor(Math.random() * 23)}:{Math.floor(Math.random() * 59)}
-          </span>
-          <br />
-          <div>{faker.lorem.paragraph()}</div>
-          <div
-            className="mb-3"
-            style={{
-              width: "100%",
-              height: "300px",
-              backgroundColor: `${faker.internet.color()}`,
-            }}
-          ></div>
-          <div
-            className="btn-group-toggle d-flex justify-content-around mb-2"
-            data-toggle="buttons"
-          >
-            <label className="btn active">
-              <input type="checkbox" defaultChecked />
-              <img
-                className="mr-2"
-                style={{ width: "25px", height: "25px" }}
-                src="https://img.icons8.com/ios/50/000000/facebook-like.png"
-              />{" "}
-              Like
-            </label>
-            <label className="btn active">
-              <input type="checkbox" defaultChecked />
-              <img
-                className="mr-2"
-                style={{ width: "25px", height: "25px" }}
-                src="https://img.icons8.com/ios/50/000000/comments.png"
-              />
-              Comment
-            </label>
-            <label className="btn active">
-              <input type="checkbox" defaultChecked />
-              <img
-                className="mr-2"
-                style={{ width: "25px", height: "25px" }}
-                src="https://img.icons8.com/ios/50/000000/forward-arrow.png"
-              />
-              Share
-            </label>
-          </div>
-          <div className="container-expand">
-            <hr />
-          </div>
-          <img
-            style={{ width: "25px", height: "25px" }}
-            src="https://img.icons8.com/ultraviolet/40/000000/good-quality.png"
-          />{" "}
-          {Math.floor(Math.random() * 99) + 1}
-          <div className="container-expand">
-            <hr />
-          </div>
-          <div className="input-group mb-3">
-            <img
-              className="rounded-circle mr-3"
-              style={{ width: "40px", height: "40px" }}
-              src={fakeAvatar}
-              alt=""
-            />
-            <input
-              type="text"
-              style={{ fontSize: "18px" }}
-              className="form-control rounded-pill"
-              placeholder="Write a comment.."
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-            />
-          </div>
-        </div>
-      );
+      posts.push({
+        uuid: faker.random.uuid(),
+        avatar: faker.internet.avatar(),
+        username: faker.internet.userName(),
+        month: faker.date.month(),
+        paragraph: faker.lorem.paragraph(),
+        color: faker.internet.color(),
+      });
     }
+    return posts;
+  }
+
+  render() {
     return (
       <div>
-        <div className="container bg-white">
-          <div
-            style={{
-              backgroundColor: `${faker.internet.color()}`,
-              width: "100%",
-              height: "400px",
-            }}
-          ></div>
-
-          <div className="btn-group mt-2 mb-2" role="group">
-            <button
-              type="button"
-              className="btn btn-light border border-dark text-muted font-weight-bolder"
-            >
-              Liked
-            </button>
-            <button
-              type="button"
-              className="btn btn-light border border-dark text-muted font-weight-bolder"
-            >
-              Following
-            </button>
-            <button
-              type="button"
-              className="btn btn-light border border-dark text-muted font-weight-bolder"
-            >
-              Share
-            </button>
-            <button
-              type="button"
-              className="btn btn-light rounded-right border border-dark text-muted font-weight-bolder"
-            >
-              ...
-            </button>
-          </div>
-          <div className="btn-group float-right mt-2" role="group">
-            <button
-              type="button"
-              className="btn btn-primary text-white border border-dark rounded font-weight-bolder mr-3"
-            >
-              Learn More
-            </button>
-            <button
-              type="button"
-              className="btn btn-light border border-dark text-muted rounded font-weight-bolder"
-            >
-              Send Message
-            </button>
-          </div>
-        </div>
+        <UserBanner color={this.state.color} />
         <div className="row mt-3">
           <div className="col-8">
             <div className="container bg-white pt-3">
               <h4>Posts</h4>
-              {post}
+              {this.state.initialPosts.map((element) => {
+                return (
+                  <Posts
+                    key={faker.random.uuid()}
+                    avatar={element.avatar}
+                    username={element.username}
+                    month={element.month}
+                    paragraph={element.paragraph}
+                    color={element.color}
+                  />
+                );
+              })}
             </div>
           </div>
           <div className="col-4">

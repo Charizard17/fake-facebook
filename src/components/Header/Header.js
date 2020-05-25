@@ -3,14 +3,23 @@ import "./Header.css";
 import alertify from "alertifyjs";
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isVisible: ""
+    }
+  }
   loginClick = (e) => {
     let username = document.getElementById("username");
     let password = document.getElementById("password");
     e.preventDefault();
-    if (username.value !== "" && password.value !== "") {
+    if (username.value === "admin" && password.value === "admin") {
       console.log("Log In succesful!");
       window.location.href = "/userpage";
       alertify.success("Log In succesful!");
+      this.setState({ isVisible: "hidden" })
+    } else if (username.value !== "" && password.value !== "") {
+      alert("Username or password incorrect!");
     } else {
       if (username.value === "" && password.value !== "") {
         console.log("Username is mandatory!");
@@ -31,7 +40,7 @@ class Header extends Component {
           <a className="navbar-brand text-white col-4" href="/">
             <h1 className="fakebook">fakebook</h1>
           </a>
-          <form className="form-inline">
+          <form className="form-inline" style={{ visibility: `${this.state.isVisible}` }}>
             <div className="input-group-sm">
               <input
                 id="username"

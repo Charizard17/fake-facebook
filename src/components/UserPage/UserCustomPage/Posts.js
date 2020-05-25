@@ -1,6 +1,24 @@
 import React, { Component } from "react";
 
 class Posts extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLiked: false,
+      likeBorder: "",
+    };
+  }
+
+  isLiked = () => {
+    if (!this.state.isliked) {
+      this.setState({ isliked: this.isLiked, likeBorder: "3px solid red" });
+      console.log(!this.state.isLiked);
+    } else {
+      this.setState({ isLiked: this.isLiked, likeBorder: "" });
+      console.log(this.state.isLiked);
+    }
+  };
+
   render() {
     return (
       <div className="container border border-secondary mb-5">
@@ -32,11 +50,15 @@ class Posts extends Component {
           className="btn-group-toggle d-flex justify-content-around mb-2"
           data-toggle="buttons"
         >
-          <label className="btn active">
+          <label onClick={this.isLiked} className="btn active">
             <input type="checkbox" defaultChecked />
             <img
               className="mr-2"
-              style={{ width: "25px", height: "25px" }}
+              style={{
+                width: "25px",
+                height: "25px",
+                border: `${this.state.likeBorder}`,
+              }}
               src="https://img.icons8.com/ios/50/000000/facebook-like.png"
             />{" "}
             Like

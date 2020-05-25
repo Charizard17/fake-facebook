@@ -2,21 +2,29 @@ import React, { Component } from "react";
 import faker from "faker";
 
 class UserInfos extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      avatar: faker.image.avatar(),
+      name: faker.name.findName(),
+      username: faker.internet.userName()
+    }
+  }
   render() {
     return (
       <div>
         <img
-          src={faker.image.avatar()}
+          src={this.state.avatar}
           alt="..."
           style={{ width: "100%" }}
           className="mb-3"
         ></img>
         <h4>
-          {faker.name.findName()}{" "}
+          {this.state.name}{" "}
           <span className="badge badge-primary ml-2 rounded-circle">✓</span>
         </h4>
         <h6 className="text-muted mb-3">
-          <strong>@{faker.internet.userName()}</strong>
+          <strong>@{this.state.username}</strong>
         </h6>
         <nav className="nav flex-column mb-3">
           <a className="nav-link" href="#">
